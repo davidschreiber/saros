@@ -3,10 +3,10 @@ package de.fu_berlin.inf.dpp.intellij.eventhandler.editor.editorstate;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
 import de.fu_berlin.inf.dpp.intellij.editor.LocalEditorHandler;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -35,9 +35,9 @@ public class EditorStatusChangeActivityDispatcher extends AbstractLocalEditorSta
       };
 
   public EditorStatusChangeActivityDispatcher(
-      Project project, LocalEditorHandler localEditorHandler) {
+      ProjectWrapper projectWrapper, LocalEditorHandler localEditorHandler) {
 
-    super(project);
+    super(projectWrapper);
 
     this.localEditorHandler = localEditorHandler;
 

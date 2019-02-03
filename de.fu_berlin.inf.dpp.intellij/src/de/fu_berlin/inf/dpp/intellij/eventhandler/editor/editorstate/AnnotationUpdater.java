@@ -3,7 +3,6 @@ package de.fu_berlin.inf.dpp.intellij.eventhandler.editor.editorstate;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
 import de.fu_berlin.inf.dpp.activities.SPath;
@@ -11,6 +10,7 @@ import de.fu_berlin.inf.dpp.filesystem.IFile;
 import de.fu_berlin.inf.dpp.intellij.editor.LocalEditorHandler;
 import de.fu_berlin.inf.dpp.intellij.editor.annotations.AnnotationManager;
 import de.fu_berlin.inf.dpp.intellij.filesystem.VirtualFileConverter;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.session.SessionUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -55,9 +55,11 @@ public class AnnotationUpdater extends AbstractLocalEditorStatusChangeHandler {
       };
 
   public AnnotationUpdater(
-      Project project, AnnotationManager annotationManager, LocalEditorHandler localEditorHandler) {
+      ProjectWrapper projectWrapper,
+      AnnotationManager annotationManager,
+      LocalEditorHandler localEditorHandler) {
 
-    super(project);
+    super(projectWrapper);
 
     this.annotationManager = annotationManager;
     this.localEditorHandler = localEditorHandler;

@@ -1,9 +1,9 @@
 package de.fu_berlin.inf.dpp.intellij.eventhandler.editor.editorstate;
 
-import com.intellij.openapi.project.Project;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.messages.Topic;
 import de.fu_berlin.inf.dpp.intellij.eventhandler.DisableableHandler;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class AbstractLocalEditorStatusChangeHandler implements DisableableHandler {
 
-  private final Project project;
+  private final ProjectWrapper projectWrapper;
 
   private boolean enabled;
 
@@ -30,10 +30,10 @@ public abstract class AbstractLocalEditorStatusChangeHandler implements Disablea
    * #setEnabled(boolean)} with <code>true</code> as part of their constructor if the handler is
    * supposed to be enabled by default.
    *
-   * @param project the current Intellij project instance
+   * @param projectWrapper the current Intellij project wrapper instance
    */
-  AbstractLocalEditorStatusChangeHandler(Project project) {
-    this.project = project;
+  AbstractLocalEditorStatusChangeHandler(ProjectWrapper projectWrapper) {
+    this.projectWrapper = projectWrapper;
 
     this.enabled = false;
   }
@@ -43,7 +43,7 @@ public abstract class AbstractLocalEditorStatusChangeHandler implements Disablea
    * #registerListeners(MessageBusConnection)} to register any needed handlers.
    */
   private void subscribe() {
-    messageBusConnection = project.getMessageBus().connect();
+    messageBusConnection = projectWrapper.getProject().getMessageBus().connect();
 
     registerListeners(messageBusConnection);
   }

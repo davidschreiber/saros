@@ -4,13 +4,13 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
 import de.fu_berlin.inf.dpp.editor.text.LineRange;
 import de.fu_berlin.inf.dpp.editor.text.TextSelection;
 import de.fu_berlin.inf.dpp.intellij.editor.LocalEditorManipulator;
 import de.fu_berlin.inf.dpp.intellij.editor.ProjectAPI;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import java.util.HashMap;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
@@ -37,9 +37,11 @@ public class ViewportAdjustmentExecutor extends AbstractLocalEditorStatusChangeH
       };
 
   public ViewportAdjustmentExecutor(
-      Project project, ProjectAPI projectAPI, LocalEditorManipulator localEditorManipulator) {
+      ProjectWrapper projectWrapper,
+      ProjectAPI projectAPI,
+      LocalEditorManipulator localEditorManipulator) {
 
-    super(project);
+    super(projectWrapper);
 
     this.projectAPI = projectAPI;
     this.localEditorManipulator = localEditorManipulator;

@@ -4,7 +4,6 @@ import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ContentIterator;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtilCore;
@@ -31,6 +30,7 @@ import de.fu_berlin.inf.dpp.intellij.editor.annotations.AnnotationManager;
 import de.fu_berlin.inf.dpp.intellij.eventhandler.DisableableHandler;
 import de.fu_berlin.inf.dpp.intellij.eventhandler.editor.document.LocalDocumentModificationHandler;
 import de.fu_berlin.inf.dpp.intellij.filesystem.VirtualFileConverter;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.project.SharedResourcesManager;
 import de.fu_berlin.inf.dpp.intellij.project.filesystem.IntelliJPathImpl;
 import de.fu_berlin.inf.dpp.session.ISarosSession;
@@ -65,7 +65,7 @@ public class LocalFilesystemModificationHandler implements DisableableHandler {
 
   @Inject private ProjectAPI projectAPI;
   @Inject private AnnotationManager annotationManager;
-  @Inject private Project project;
+  @Inject private ProjectWrapper projectWrapper;
   @Inject private LocalEditorHandler localEditorHandler;
 
   private boolean enabled;
@@ -124,12 +124,12 @@ public class LocalFilesystemModificationHandler implements DisableableHandler {
 
     this.localFileSystem = LocalFileSystem.getInstance();
 
-    String projectBasePath = project.getBasePath();
+    String projectBasePath = projectWrapper.getProject().getBasePath();
     if (projectBasePath == null) {
       LOG.error(
           "Could not register the VirtualFileListener as the current project does not have a base "
               + "path. Saros will not be able to react to local filesystem changes. project: "
-              + project);
+              + projectWrapper.getProject());
 
       return;
     }
@@ -473,8 +473,8 @@ public class LocalFilesystemModificationHandler implements DisableableHandler {
      */
     VirtualFileFilter virtualFileFilter =
         file -> {
-          Module baseModule = ModuleUtil.findModuleForFile(oldFile, project);
-          Module module = ModuleUtil.findModuleForFile(file, project);
+          Module baseModule = ModuleUtil.findModuleForFile(oldFile, projectWrapper.getProject());
+          Module module = ModuleUtil.findModuleForFile(file, projectWrapper.getProject());
 
           return baseModule != null && baseModule.equals(module);
         };

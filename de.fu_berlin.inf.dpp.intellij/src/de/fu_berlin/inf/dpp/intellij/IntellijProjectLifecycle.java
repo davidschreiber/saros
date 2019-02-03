@@ -5,10 +5,13 @@ import de.fu_berlin.inf.dpp.HTMLUIContextFactory;
 import de.fu_berlin.inf.dpp.context.AbstractContextLifecycle;
 import de.fu_berlin.inf.dpp.context.IContextFactory;
 import de.fu_berlin.inf.dpp.intellij.context.SarosIntellijContextFactory;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.ui.swt_browser.SwtLibLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Extends the {@link AbstractContextLifecycle} for an IntelliJ plug-in. It contains additional
@@ -22,32 +25,48 @@ import java.util.List;
  * FIXME: Project lifecycle causes serious issues, switch back to application lifecycle and correct the file system implementation as needed !
  */
 public class IntellijProjectLifecycle extends AbstractContextLifecycle {
+  private static final Logger log = Logger.getLogger(IntellijProjectLifecycle.class);
 
   private static IntellijProjectLifecycle instance;
+  private static ProjectWrapper projectWrapper;
 
   /**
-   * Creates a new IntellijProjectLifecycle singleton instance from a project.
+   * Returns the current instance of IntellijProjectLifecycle.
    *
-   * @param project
-   * @return
+   * <p>IntellijProjectLifecycle is singleton, meaning this call will always return the same object.
+   * If a new project object is passed, it will replace the currently held project object in the
+   * plugin context.
+   *
+   * @param project the project object to put into the plugin context
+   * @return the singleton instance of the IntellijProjectLifecycle
    */
-  public static synchronized IntellijProjectLifecycle getInstance(Project project) {
-    instance = new IntellijProjectLifecycle(project);
+  public static synchronized IntellijProjectLifecycle getInstance(@NotNull Project project) {
+    if (instance != null) {
+      if (projectWrapper.getProject().isDisposed()) {
+        log.debug(
+            "Replacing disposed project currently held in plugin context with project "
+                + project.getName());
+
+        projectWrapper.setProject(project);
+      }
+
+    } else {
+      log.debug("Initializing plugin context with project " + project.getName());
+      instance = new IntellijProjectLifecycle(project);
+    }
 
     return instance;
   }
 
-  private Project project;
-
   private IntellijProjectLifecycle(Project project) {
-    this.project = project;
+    projectWrapper = new ProjectWrapper(project);
   }
 
   @Override
   protected Collection<IContextFactory> additionalContextFactories() {
     List<IContextFactory> nonCoreFactories = new ArrayList<>();
 
-    nonCoreFactories.add(new SarosIntellijContextFactory(project));
+    nonCoreFactories.add(new SarosIntellijContextFactory(projectWrapper));
 
     if (SarosComponent.isSwtBrowserEnabled()) {
       SwtLibLoader.loadSwtLib();

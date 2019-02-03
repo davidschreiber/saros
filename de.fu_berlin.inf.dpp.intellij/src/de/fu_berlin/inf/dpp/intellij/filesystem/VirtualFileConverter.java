@@ -2,12 +2,12 @@ package de.fu_berlin.inf.dpp.intellij.filesystem;
 
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
 import de.fu_berlin.inf.dpp.activities.SPath;
 import de.fu_berlin.inf.dpp.filesystem.IProject;
 import de.fu_berlin.inf.dpp.filesystem.IResource;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +21,7 @@ public class VirtualFileConverter {
 
   private static final Logger log = Logger.getLogger(VirtualFileConverter.class);
 
-  @Inject private static Project project;
+  @Inject private static ProjectWrapper projectWrapper;
 
   static {
     SarosPluginContext.initComponent(new VirtualFileConverter());
@@ -60,7 +60,7 @@ public class VirtualFileConverter {
   @Nullable
   public static IResource convertToResource(@NotNull VirtualFile virtualFile) {
 
-    Module module = ModuleUtil.findModuleForFile(virtualFile, project);
+    Module module = ModuleUtil.findModuleForFile(virtualFile, projectWrapper.getProject());
 
     if (module == null) {
       log.debug(

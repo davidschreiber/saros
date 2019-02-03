@@ -3,8 +3,8 @@ package de.fu_berlin.inf.dpp.intellij.ui.wizards;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.project.Project;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.ui.wizards.pages.AbstractWizardPage;
 import de.fu_berlin.inf.dpp.intellij.ui.wizards.pages.HeaderPanel;
 import de.fu_berlin.inf.dpp.intellij.ui.wizards.pages.NavigationPanel;
@@ -71,7 +71,7 @@ public abstract class Wizard extends JDialog {
 
   private final NavigationPanel navigationPanel;
 
-  @Inject protected Project project;
+  @Inject protected ProjectWrapper projectWrapper;
 
   /**
    * Constructor creates wizard structure.
@@ -174,7 +174,7 @@ public abstract class Wizard extends JDialog {
   public void runTask(final Runnable runnable, String title) {
     ProgressManager.getInstance()
         .run(
-            new Task.Modal(project, title, false) {
+            new Task.Modal(projectWrapper.getProject(), title, false) {
 
               @Override
               public void run(@NotNull ProgressIndicator indicator) {

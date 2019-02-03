@@ -6,7 +6,6 @@ import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.event.SelectionEvent;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -42,6 +41,7 @@ import de.fu_berlin.inf.dpp.intellij.eventhandler.editor.selection.LocalTextSele
 import de.fu_berlin.inf.dpp.intellij.eventhandler.editor.viewport.LocalViewPortChangeHandler;
 import de.fu_berlin.inf.dpp.intellij.filesystem.Filesystem;
 import de.fu_berlin.inf.dpp.intellij.filesystem.VirtualFileConverter;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.observables.FileReplacementInProgressObservable;
 import de.fu_berlin.inf.dpp.session.AbstractActivityConsumer;
 import de.fu_berlin.inf.dpp.session.AbstractActivityProducer;
@@ -517,7 +517,7 @@ public class EditorManager extends AbstractActivityProducer implements IEditorMa
       ProjectAPI projectAPI,
       AnnotationManager annotationManager,
       FileReplacementInProgressObservable fileReplacementInProgressObservable,
-      Project project,
+      ProjectWrapper projectWrapper,
       EditorAPI editorAPI) {
 
     sessionManager.addSessionLifecycleListener(sessionLifecycleListener);
@@ -531,13 +531,14 @@ public class EditorManager extends AbstractActivityProducer implements IEditorMa
     localClosedEditorModificationHandler =
         new LocalClosedEditorModificationHandler(this, projectAPI, annotationManager);
 
-    annotationUpdater = new AnnotationUpdater(project, annotationManager, localEditorHandler);
+    annotationUpdater =
+        new AnnotationUpdater(projectWrapper, annotationManager, localEditorHandler);
     editorStatusChangeActivityDispatcher =
-        new EditorStatusChangeActivityDispatcher(project, localEditorHandler);
+        new EditorStatusChangeActivityDispatcher(projectWrapper, localEditorHandler);
     preexistingSelectionDispatcher =
-        new PreexistingSelectionDispatcher(project, this, localEditorHandler);
+        new PreexistingSelectionDispatcher(projectWrapper, this, localEditorHandler);
     viewportAdjustmentExecutor =
-        new ViewportAdjustmentExecutor(project, projectAPI, localEditorManipulator);
+        new ViewportAdjustmentExecutor(projectWrapper, projectAPI, localEditorManipulator);
 
     localTextSelectionChangeHandler = new LocalTextSelectionChangeHandler(this);
 

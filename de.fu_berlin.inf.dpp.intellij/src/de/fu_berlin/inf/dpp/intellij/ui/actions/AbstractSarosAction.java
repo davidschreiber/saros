@@ -1,7 +1,7 @@
 package de.fu_berlin.inf.dpp.intellij.ui.actions;
 
-import com.intellij.openapi.project.Project;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public abstract class AbstractSarosAction {
 
   private final List<ActionListener> actionListeners = new ArrayList<ActionListener>();
 
-  @Inject protected Project project;
+  @Inject protected ProjectWrapper projectWrapper;
 
   protected AbstractSarosAction() {
     SarosPluginContext.initComponent(this);

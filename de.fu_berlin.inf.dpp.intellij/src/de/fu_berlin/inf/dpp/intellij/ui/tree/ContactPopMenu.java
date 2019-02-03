@@ -2,12 +2,12 @@ package de.fu_berlin.inf.dpp.intellij.ui.tree;
 
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.project.Project;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
 import de.fu_berlin.inf.dpp.core.ui.util.CollaborationUtils;
 import de.fu_berlin.inf.dpp.filesystem.IProject;
 import de.fu_berlin.inf.dpp.filesystem.IResource;
 import de.fu_berlin.inf.dpp.filesystem.IWorkspace;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.ui.Messages;
 import de.fu_berlin.inf.dpp.intellij.ui.util.IconManager;
 import de.fu_berlin.inf.dpp.intellij.ui.util.NotificationPanel;
@@ -34,17 +34,17 @@ class ContactPopMenu extends JPopupMenu {
 
   @Inject private IWorkspace workspace;
 
-  @Inject private Project project;
+  @Inject private ProjectWrapper projectWrapper;
 
   private final ContactTreeRootNode.ContactInfo contactInfo;
 
   ContactPopMenu(ContactTreeRootNode.ContactInfo contactInfo) {
     this.contactInfo = contactInfo;
 
-    if (workspace == null || project == null) {
+    if (workspace == null || projectWrapper.getProject() == null) {
       SarosPluginContext.initComponent(this);
 
-      if (workspace == null || project == null) {
+      if (workspace == null || projectWrapper.getProject() == null) {
         LOG.error("PicoContainer injection failed. Objects still not present after injection.");
 
         return;
@@ -54,7 +54,7 @@ class ContactPopMenu extends JPopupMenu {
     JMenu menuShareProject = new JMenu("Work together on...");
     menuShareProject.setIcon(IconManager.SESSIONS_ICON);
 
-    ModuleManager moduleManager = ModuleManager.getInstance(project);
+    ModuleManager moduleManager = ModuleManager.getInstance(projectWrapper.getProject());
 
     if (moduleManager == null) {
 
@@ -73,7 +73,7 @@ class ContactPopMenu extends JPopupMenu {
     for (Module module : moduleManager.getModules()) {
       String moduleName = module.getName();
 
-      if (project.getName().equalsIgnoreCase(moduleName)) {
+      if (projectWrapper.getProject().getName().equalsIgnoreCase(moduleName)) {
         continue;
       }
 

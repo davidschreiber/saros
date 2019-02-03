@@ -2,6 +2,7 @@ package de.fu_berlin.inf.dpp.intellij.context;
 
 import de.fu_berlin.inf.dpp.context.CoreContextFactory;
 import de.fu_berlin.inf.dpp.context.IContextFactory;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.test.mocks.ContextMocker;
 import de.fu_berlin.inf.dpp.test.mocks.PrepareCoreComponents;
 import org.junit.Assert;
@@ -24,7 +25,7 @@ public class SarosIntellijContextFactoryTest extends AbstractContextTest {
 
   @Test
   public void testCreateComponents() {
-    IContextFactory factory = new SarosIntellijContextFactory(project);
+    IContextFactory factory = new SarosIntellijContextFactory(new ProjectWrapper(project));
 
     factory.createComponents(container);
     container.start();

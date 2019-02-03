@@ -1,6 +1,5 @@
 package de.fu_berlin.inf.dpp.intellij.context;
 
-import com.intellij.openapi.project.Project;
 import de.fu_berlin.inf.dpp.communication.connection.IProxyResolver;
 import de.fu_berlin.inf.dpp.communication.connection.NullProxyResolver;
 import de.fu_berlin.inf.dpp.context.AbstractContextFactory;
@@ -26,6 +25,7 @@ import de.fu_berlin.inf.dpp.intellij.editor.annotations.AnnotationManager;
 import de.fu_berlin.inf.dpp.intellij.negotiation.hooks.ModuleTypeNegotiationHook;
 import de.fu_berlin.inf.dpp.intellij.preferences.IntelliJPreferences;
 import de.fu_berlin.inf.dpp.intellij.preferences.PropertiesComponentAdapter;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.project.filesystem.IntelliJWorkspaceImpl;
 import de.fu_berlin.inf.dpp.intellij.project.filesystem.IntelliJWorkspaceRootImpl;
 import de.fu_berlin.inf.dpp.intellij.project.filesystem.PathFactory;
@@ -94,10 +94,10 @@ public class SarosIntellijContextFactory extends AbstractContextFactory {
     };
   }
 
-  private Project project;
+  private ProjectWrapper projectWrapper;
 
-  public SarosIntellijContextFactory(Project project) {
-    this.project = project;
+  public SarosIntellijContextFactory(ProjectWrapper projectWrapper) {
+    this.projectWrapper = projectWrapper;
   }
 
   @Override
@@ -106,7 +106,8 @@ public class SarosIntellijContextFactory extends AbstractContextFactory {
     // Saros Core PathIntl Support
     container.addComponent(IPathFactory.class, new PathFactory());
 
-    container.addComponent(Project.class, project);
+    // container.addComponent(Project.class, project);
+    container.addComponent(ProjectWrapper.class, projectWrapper);
     container.addComponent(IWorkspace.class, IntelliJWorkspaceImpl.class);
 
     for (Component component : Arrays.asList(getContextComponents())) {

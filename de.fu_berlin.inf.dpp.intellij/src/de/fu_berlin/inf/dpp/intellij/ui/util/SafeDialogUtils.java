@@ -3,10 +3,10 @@ package de.fu_berlin.inf.dpp.intellij.ui.util;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
 import de.fu_berlin.inf.dpp.exceptions.IllegalAWTContextException;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import java.awt.Component;
 import java.util.concurrent.atomic.AtomicReference;
 import org.apache.log4j.Logger;
@@ -30,7 +30,7 @@ public class SafeDialogUtils {
 
   private static final Application application;
 
-  @Inject private static Project project;
+  @Inject private static ProjectWrapper projectWrapper;
 
   static {
     application = ApplicationManager.getApplication();
@@ -69,7 +69,12 @@ public class SafeDialogUtils {
           public void run() {
             String option =
                 Messages.showInputDialog(
-                    project, message, title, Messages.getQuestionIcon(), initialValue, null);
+                    projectWrapper.getProject(),
+                    message,
+                    title,
+                    Messages.getQuestionIcon(),
+                    initialValue,
+                    null);
             if (option != null) {
               response.set(option);
             }
@@ -87,7 +92,7 @@ public class SafeDialogUtils {
         new Runnable() {
           @Override
           public void run() {
-            Messages.showWarningDialog(project, message, title);
+            Messages.showWarningDialog(projectWrapper.getProject(), message, title);
           }
         },
         ModalityState.defaultModalityState());
@@ -100,7 +105,7 @@ public class SafeDialogUtils {
         new Runnable() {
           @Override
           public void run() {
-            Messages.showErrorDialog(project, message, title);
+            Messages.showErrorDialog(projectWrapper.getProject(), message, title);
           }
         },
         ModalityState.defaultModalityState());
@@ -146,7 +151,8 @@ public class SafeDialogUtils {
     application.invokeAndWait(
         () -> {
           String option =
-              Messages.showPasswordDialog(project, message, title, Messages.getQuestionIcon());
+              Messages.showPasswordDialog(
+                  projectWrapper.getProject(), message, title, Messages.getQuestionIcon());
 
           if (option != null) {
             response.set(option);
@@ -180,7 +186,8 @@ public class SafeDialogUtils {
     application.invokeAndWait(
         () -> {
           Integer option =
-              Messages.showYesNoDialog(project, message, title, Messages.getQuestionIcon());
+              Messages.showYesNoDialog(
+                  projectWrapper.getProject(), message, title, Messages.getQuestionIcon());
 
           response.set(option);
         },

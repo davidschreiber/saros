@@ -1,8 +1,8 @@
 package de.fu_berlin.inf.dpp.intellij.ui.widgets.progress;
 
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.WindowManager;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.monitoring.IProgressMonitor;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -22,7 +22,7 @@ public class ProgressFrame implements IProgressMonitor {
 
   private MonitorProgressBar monitorProgressBar;
 
-  @Inject private Project project;
+  @Inject private ProjectWrapper projectWrapper;
 
   private JFrame frmMain;
   private JButton btnCancel;
@@ -42,7 +42,8 @@ public class ProgressFrame implements IProgressMonitor {
 
     frmMain = new JFrame(title);
     frmMain.setSize(300, 160);
-    frmMain.setLocationRelativeTo(WindowManager.getInstance().getFrame(project));
+    frmMain.setLocationRelativeTo(
+        WindowManager.getInstance().getFrame(projectWrapper.getProject()));
 
     Container pane = frmMain.getContentPane();
     pane.setLayout(null);

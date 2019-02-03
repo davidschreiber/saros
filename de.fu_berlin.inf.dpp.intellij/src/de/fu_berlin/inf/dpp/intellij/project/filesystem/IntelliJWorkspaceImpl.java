@@ -2,7 +2,6 @@ package de.fu_berlin.inf.dpp.intellij.project.filesystem;
 
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Computable;
 import de.fu_berlin.inf.dpp.exceptions.OperationCanceledException;
 import de.fu_berlin.inf.dpp.filesystem.IPath;
@@ -12,6 +11,7 @@ import de.fu_berlin.inf.dpp.filesystem.IWorkspace;
 import de.fu_berlin.inf.dpp.filesystem.IWorkspaceRunnable;
 import de.fu_berlin.inf.dpp.intellij.filesystem.Filesystem;
 import de.fu_berlin.inf.dpp.intellij.filesystem.IntelliJProjectImpl;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.monitoring.NullProgressMonitor;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -19,10 +19,10 @@ import org.apache.log4j.Logger;
 public class IntelliJWorkspaceImpl implements IWorkspace {
   public static final Logger LOG = Logger.getLogger(IntelliJWorkspaceImpl.class);
 
-  private Project project;
+  private final ProjectWrapper projectWrapper;
 
-  public IntelliJWorkspaceImpl(Project project) {
-    this.project = project;
+  public IntelliJWorkspaceImpl(ProjectWrapper projectWrapper) {
+    this.projectWrapper = projectWrapper;
   }
 
   @Override
@@ -43,7 +43,8 @@ public class IntelliJWorkspaceImpl implements IWorkspace {
             new Computable<Module>() {
               @Override
               public Module compute() {
-                return ModuleManager.getInstance(project).findModuleByName(moduleName);
+                return ModuleManager.getInstance(projectWrapper.getProject())
+                    .findModuleByName(moduleName);
               }
             });
 
@@ -52,6 +53,6 @@ public class IntelliJWorkspaceImpl implements IWorkspace {
 
   @Override
   public IPath getLocation() {
-    return IntelliJPathImpl.fromString(project.getBasePath());
+    return IntelliJPathImpl.fromString(projectWrapper.getProject().getBasePath());
   }
 }

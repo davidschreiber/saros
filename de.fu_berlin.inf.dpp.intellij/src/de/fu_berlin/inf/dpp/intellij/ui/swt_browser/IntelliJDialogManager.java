@@ -1,7 +1,7 @@
 package de.fu_berlin.inf.dpp.intellij.ui.swt_browser;
 
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.WindowManager;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.synchronize.UISynchronizer;
 import de.fu_berlin.inf.dpp.ui.ide_embedding.DialogManager;
 import de.fu_berlin.inf.dpp.ui.ide_embedding.IBrowserDialog;
@@ -14,17 +14,17 @@ import javax.swing.JFrame;
 /** Implements the dialog manager for the IntelliJ platform. */
 public class IntelliJDialogManager extends DialogManager {
 
-  private Project project;
+  private ProjectWrapper projectWrapper;
 
-  public IntelliJDialogManager(UISynchronizer uiSynchronizer, Project project) {
+  public IntelliJDialogManager(UISynchronizer uiSynchronizer, ProjectWrapper projectWrapper) {
     super(uiSynchronizer);
 
-    this.project = project;
+    this.projectWrapper = projectWrapper;
   }
 
   @Override
   protected IBrowserDialog createDialog(final IBrowserPage startPage) {
-    JFrame parent = WindowManager.getInstance().getFrame(project);
+    JFrame parent = WindowManager.getInstance().getFrame(projectWrapper.getProject());
     JDialog jDialog = new JDialog(parent);
     jDialog.addWindowListener(
         new WindowAdapter() {

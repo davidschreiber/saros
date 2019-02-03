@@ -1,8 +1,8 @@
 package de.fu_berlin.inf.dpp.intellij.ui.util;
 
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.WindowManager;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JOptionPane;
@@ -13,7 +13,7 @@ import org.picocontainer.annotations.Inject;
 public class DialogUtils {
   private static final Logger LOG = Logger.getLogger(DialogUtils.class);
 
-  @Inject private static Project project;
+  @Inject private static ProjectWrapper projectWrapper;
 
   private DialogUtils() {}
 
@@ -92,6 +92,8 @@ public class DialogUtils {
   }
 
   private static Component notNullOrDefaultParent(Component parent) {
-    return parent != null ? parent : WindowManager.getInstance().getFrame(project);
+    return parent != null
+        ? parent
+        : WindowManager.getInstance().getFrame(projectWrapper.getProject());
   }
 }

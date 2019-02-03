@@ -3,13 +3,13 @@ package de.fu_berlin.inf.dpp.intellij.eventhandler.editor.editorstate;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
 import de.fu_berlin.inf.dpp.activities.SPath;
 import de.fu_berlin.inf.dpp.intellij.editor.EditorManager;
 import de.fu_berlin.inf.dpp.intellij.editor.LocalEditorHandler;
 import de.fu_berlin.inf.dpp.intellij.filesystem.VirtualFileConverter;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.session.SessionUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,9 +38,11 @@ public class PreexistingSelectionDispatcher extends AbstractLocalEditorStatusCha
       };
 
   public PreexistingSelectionDispatcher(
-      Project project, EditorManager editorManager, LocalEditorHandler localEditorHandler) {
+      ProjectWrapper projectWrapper,
+      EditorManager editorManager,
+      LocalEditorHandler localEditorHandler) {
 
-    super(project);
+    super(projectWrapper);
 
     this.editorManager = editorManager;
     this.localEditorHandler = localEditorHandler;

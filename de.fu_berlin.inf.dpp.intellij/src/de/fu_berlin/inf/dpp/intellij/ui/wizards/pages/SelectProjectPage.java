@@ -2,8 +2,8 @@ package de.fu_berlin.inf.dpp.intellij.ui.wizards.pages;
 
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.project.Project;
 import de.fu_berlin.inf.dpp.SarosPluginContext;
+import de.fu_berlin.inf.dpp.intellij.project.ProjectWrapper;
 import de.fu_berlin.inf.dpp.intellij.ui.Messages;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -79,7 +79,7 @@ public class SelectProjectPage extends AbstractWizardPage {
   private JLabel lblNewProject;
   private JLabel lblExistingProject;
 
-  @Inject private transient Project project;
+  @Inject private transient ProjectWrapper projectWrapper;
 
   public SelectProjectPage(
       String id,
@@ -218,7 +218,7 @@ public class SelectProjectPage extends AbstractWizardPage {
         };
     browseButton.addActionListener(browseListener);
 
-    ModuleManager moduleManager = ModuleManager.getInstance(project);
+    ModuleManager moduleManager = ModuleManager.getInstance(projectWrapper.getProject());
 
     Optional<Module> module =
         Arrays.stream(moduleManager.getModules())

@@ -67,4 +67,8 @@ public interface IResource {
   public IPath getLocation();
 
   public <T extends IResource> T adaptTo(Class<T> clazz);
+
+  /** Returns the {@link IReferencePoint} on which the resource is referenced to */
+  @Deprecated
+  public IReferencePoint getReferencePoint();
 }

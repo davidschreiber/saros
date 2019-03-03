@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.editor.EditorManager;
-import saros.filesystem.IProject;
+import saros.filesystem.IReferencePoint;
 import saros.session.ISarosSession;
 import saros.session.ISarosSessionManager;
 import saros.session.ISessionLifecycleListener;
@@ -57,7 +57,7 @@ public abstract class SessionDisplayComposite extends ViewerComposite<TreeViewer
   private final ISessionListener sessionListener =
       new ISessionListener() {
         @Override
-        public void resourcesAdded(IProject project) {
+        public void resourcesAdded(IReferencePoint referencePoint) {
           ViewerUtils.refresh(getViewer(), true);
         }
       };

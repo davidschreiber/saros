@@ -16,6 +16,14 @@ public interface IReferencePointManager {
   void put(IReferencePoint referencePoint, IProject project);
 
   /**
+   * Inset a Set of projects. The IReferencePointManager determinates the reference points of the
+   * project automatically
+   *
+   * @param projects Set of project, which should be inserted
+   */
+  void putSetOfProjects(Set<IProject> projects);
+
+  /**
    * ATTENTION: Don't use this in Saros Core! Returns the IProject given by the IReferencePoint
    *
    * @param referencePoint the key for which the IProject should be returned

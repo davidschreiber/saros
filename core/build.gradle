@@ -7,7 +7,7 @@ dependencies {
   releaseDep 'commons-io:commons-io:2.0.1'
   releaseDep 'org.apache.commons:commons-lang3:3.8.1'
   releaseDep 'javax.jmdns:jmdns:3.4.1'
-  releaseDep 'org.picocontainer:picocontainer:2.11.2'
+  releaseDep project(path: ':saros.picocontainer', configuration: 'shadow')
   releaseDep 'org.igniterealtime.smack:smack:3.4.1'
   releaseDep 'org.igniterealtime.smack:smackx:3.4.1'
   releaseDep 'xpp3:xpp3:1.1.4c'

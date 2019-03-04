@@ -35,6 +35,7 @@ public interface IWorkspace {
   public void run(IWorkspaceRunnable runnable, IResource[] resources)
       throws IOException, OperationCanceledException;
 
+  @Deprecated
   public IProject getProject(String project);
 
   public IPath getLocation();

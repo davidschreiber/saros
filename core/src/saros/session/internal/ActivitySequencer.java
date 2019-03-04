@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.PacketExtension;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.ActivityOptimizer;
 import saros.activities.FileActivity;
 import saros.activities.IActivity;

@@ -1,7 +1,7 @@
 package saros.ui.expressions;
 
 import org.eclipse.core.expressions.PropertyTester;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.Saros;
 import saros.SarosPluginContext;
 import saros.communication.connection.ConnectionHandler;

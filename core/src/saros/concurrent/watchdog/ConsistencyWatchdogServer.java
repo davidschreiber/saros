@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.ChecksumActivity;
 import saros.activities.SPath;
 import saros.activities.TextEditActivity;

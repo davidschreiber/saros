@@ -21,7 +21,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.Saros;
 import saros.SarosPluginContext;
 import saros.activities.SPath;

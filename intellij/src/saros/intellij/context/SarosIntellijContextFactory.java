@@ -2,8 +2,8 @@ package saros.intellij.context;
 
 import com.intellij.openapi.project.Project;
 import java.util.Arrays;
-import org.picocontainer.BindKey;
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.BindKey;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.communication.connection.IProxyResolver;
 import saros.communication.connection.NullProxyResolver;
 import saros.context.AbstractContextFactory;

@@ -8,7 +8,7 @@ import com.intellij.openapi.ui.Messages;
 import java.awt.Component;
 import java.util.concurrent.atomic.AtomicReference;
 import org.apache.log4j.Logger;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.exceptions.IllegalAWTContextException;
 

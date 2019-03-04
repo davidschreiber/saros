@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.jivesoftware.smack.XMPPException;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.communication.chat.IChat;
 import saros.communication.chat.IChatServiceListener;

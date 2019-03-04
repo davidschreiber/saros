@@ -3,7 +3,7 @@ package saros.ui.browser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.HTMLUIContextFactory;
 import saros.context.IContextFactory;
 import saros.synchronize.UISynchronizer;

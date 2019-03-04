@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.FileActivity;
 import saros.activities.IActivity;
 import saros.activities.SPath;

@@ -19,7 +19,7 @@
 
 package saros.context;
 
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 
 /**
  * Interface for implementing context factories depending on the current platform Saros is running

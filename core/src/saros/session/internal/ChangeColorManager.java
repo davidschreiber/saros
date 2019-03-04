@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.ChangeColorActivity;
 import saros.annotations.Component;
 import saros.editor.colorstorage.ColorIDSet;

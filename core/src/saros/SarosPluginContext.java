@@ -1,7 +1,7 @@
 package saros;
 
-import org.picocontainer.PicoCompositionException;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.PicoCompositionException;
+import org.saros.picocontainer.annotations.Inject;
 import saros.context.IContainerContext;
 
 /**

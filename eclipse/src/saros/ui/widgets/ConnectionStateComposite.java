@@ -9,7 +9,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.StreamError;
 import org.jivesoftware.smack.packet.XMPPError;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.account.XMPPAccountStore;
 import saros.communication.connection.ConnectionHandler;

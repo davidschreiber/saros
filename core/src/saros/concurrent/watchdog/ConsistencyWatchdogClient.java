@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.ChecksumActivity;
 import saros.activities.ChecksumErrorActivity;
 import saros.activities.FileActivity;

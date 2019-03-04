@@ -4,7 +4,7 @@ import com.intellij.ui.AncestorListenerAdapter;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.event.AncestorEvent;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.ui.pages.MainPage;
 

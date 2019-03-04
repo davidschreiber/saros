@@ -7,7 +7,7 @@ import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.Set;
 import org.apache.log4j.Logger;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.activities.SPath;
 import saros.concurrent.watchdog.ConsistencyWatchdogClient;

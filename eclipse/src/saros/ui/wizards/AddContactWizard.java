@@ -12,7 +12,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.XMPPException;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosConstants;
 import saros.SarosPluginContext;
 import saros.net.util.XMPPUtils;

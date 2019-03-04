@@ -15,7 +15,7 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.StopActivity;
 import saros.activities.StopActivity.State;
 import saros.activities.StopActivity.Type;

@@ -2,7 +2,7 @@ package saros.ui.wizards;
 
 import org.bitlet.weupnp.GatewayDevice;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.editor.colorstorage.UserColorID;
 import saros.feedback.ErrorLogManager;

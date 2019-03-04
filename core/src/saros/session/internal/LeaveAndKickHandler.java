@@ -3,7 +3,7 @@ package saros.session.internal;
 import org.apache.log4j.Logger;
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.Packet;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.communication.extensions.KickUserExtension;
 import saros.communication.extensions.LeaveSessionExtension;
 import saros.net.IReceiver;

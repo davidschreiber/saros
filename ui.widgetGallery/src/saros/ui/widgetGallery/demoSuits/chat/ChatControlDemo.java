@@ -10,7 +10,7 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.communication.chat.ChatElement;
 import saros.communication.chat.muc.MultiUserChat;
 import saros.communication.chat.muc.MultiUserChatPreferences;

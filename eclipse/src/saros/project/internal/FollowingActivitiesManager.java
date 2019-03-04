@@ -3,7 +3,7 @@ package saros.project.internal;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.StartFollowingActivity;
 import saros.activities.StopFollowingActivity;
 import saros.annotations.Component;

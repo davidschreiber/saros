@@ -1,7 +1,7 @@
 package saros.editor;
 
 import java.util.concurrent.CopyOnWriteArrayList;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.EditorActivity;
 import saros.activities.IActivity;
 import saros.activities.SPath;

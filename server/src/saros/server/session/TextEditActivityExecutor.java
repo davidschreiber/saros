@@ -1,6 +1,6 @@
 package saros.server.session;
 
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.TextEditActivity;
 import saros.server.editor.ServerEditorManager;
 import saros.session.AbstractActivityConsumer;

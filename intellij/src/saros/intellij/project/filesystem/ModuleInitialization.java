@@ -10,7 +10,7 @@ import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vfs.VirtualFile;
 import java.io.IOException;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.exceptions.ModuleNotFoundException;
 import saros.filesystem.IProject;
 import saros.intellij.filesystem.IntelliJProjectImpl;

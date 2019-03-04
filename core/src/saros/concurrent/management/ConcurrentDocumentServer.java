@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.AbstractActivityReceiver;
 import saros.activities.ChecksumActivity;
 import saros.activities.FileActivity;

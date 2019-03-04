@@ -1,6 +1,6 @@
 package saros.project.internal;
 
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.feedback.DataTransferCollector;
 import saros.feedback.ErrorLogManager;
 import saros.feedback.FeedbackManager;

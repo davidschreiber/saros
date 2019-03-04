@@ -12,7 +12,7 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.RosterEntry;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.net.ConnectionState;
 import saros.net.xmpp.IConnectionListener;

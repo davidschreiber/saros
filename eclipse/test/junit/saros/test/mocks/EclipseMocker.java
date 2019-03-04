@@ -14,7 +14,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Version;
 import org.osgi.service.prefs.Preferences;
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 import org.powermock.api.easymock.PowerMock;
 import saros.Saros;
 import saros.preferences.EclipsePreferenceInitializer;

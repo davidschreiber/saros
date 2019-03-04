@@ -1,6 +1,6 @@
 package saros.core.project.internal;
 
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.intellij.followmode.FollowModeNotificationDispatcher;
 import saros.intellij.project.SharedResourcesManager;
 import saros.intellij.project.filesystem.ModuleInitialization;

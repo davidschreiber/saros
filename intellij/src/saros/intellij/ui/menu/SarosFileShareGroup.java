@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.RosterEntry;
 import org.jivesoftware.smack.packet.Presence;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.intellij.filesystem.IntelliJProjectImpl;
 import saros.net.xmpp.JID;

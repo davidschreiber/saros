@@ -18,7 +18,7 @@ import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
 import org.jivesoftware.smackx.packet.DiscoverInfo;
-import org.picocontainer.Disposable;
+import org.saros.picocontainer.Disposable;
 import saros.annotations.Component;
 import saros.net.xmpp.JID;
 import saros.net.xmpp.XMPPConnectionService;

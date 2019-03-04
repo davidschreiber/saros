@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.FileActivity;
 import saros.activities.FolderCreatedActivity;
 import saros.activities.FolderDeletedActivity;

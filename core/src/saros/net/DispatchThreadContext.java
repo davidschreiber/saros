@@ -3,7 +3,7 @@ package saros.net;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.apache.log4j.Logger;
-import org.picocontainer.Disposable;
+import org.saros.picocontainer.Disposable;
 import saros.annotations.Component;
 import saros.util.NamedThreadFactory;
 import saros.util.ThreadUtils;

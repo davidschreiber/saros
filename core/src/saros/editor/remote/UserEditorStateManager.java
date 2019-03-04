@@ -3,7 +3,7 @@ package saros.editor.remote;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.IActivity;
 import saros.activities.SPath;
 import saros.annotations.Component;

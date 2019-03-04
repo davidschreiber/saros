@@ -11,7 +11,7 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.net.IReceiver;
 import saros.net.ITransmitter;

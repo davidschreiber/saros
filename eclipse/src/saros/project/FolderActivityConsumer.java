@@ -3,7 +3,7 @@ package saros.project;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.CoreException;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.FolderCreatedActivity;
 import saros.activities.FolderDeletedActivity;
 import saros.activities.IActivity;

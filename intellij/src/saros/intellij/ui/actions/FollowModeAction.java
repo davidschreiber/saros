@@ -1,6 +1,6 @@
 package saros.intellij.ui.actions;
 
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.editor.FollowModeManager;
 import saros.session.ISarosSession;
 import saros.session.ISarosSessionManager;

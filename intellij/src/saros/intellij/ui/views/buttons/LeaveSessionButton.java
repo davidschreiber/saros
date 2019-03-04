@@ -1,6 +1,6 @@
 package saros.intellij.ui.views.buttons;
 
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.intellij.ui.actions.LeaveSessionAction;
 import saros.intellij.ui.util.IconManager;

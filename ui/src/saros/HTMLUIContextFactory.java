@@ -2,7 +2,7 @@ package saros;
 
 import static saros.context.AbstractContextFactory.Component.create;
 
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.context.AbstractContextFactory;
 import saros.ui.browser_functions.AddContact;
 import saros.ui.browser_functions.CloseAccountWizard;

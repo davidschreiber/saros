@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.filesystem.IChecksumCache;
 import saros.filesystem.IProject;
 import saros.filesystem.IWorkspace;

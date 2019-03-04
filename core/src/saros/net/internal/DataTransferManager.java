@@ -17,7 +17,7 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 import org.apache.log4j.Logger;
 import org.jivesoftware.smack.Connection;
-import org.picocontainer.annotations.Nullable;
+import org.saros.picocontainer.annotations.Nullable;
 import saros.annotations.Component;
 import saros.context.IContextKeyBindings.IBBStreamService;
 import saros.context.IContextKeyBindings.Socks5StreamService;

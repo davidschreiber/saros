@@ -6,8 +6,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-import org.picocontainer.Disposable;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Disposable;
+import org.saros.picocontainer.Startable;
 import saros.synchronize.UISynchronizer;
 
 public class NonUISynchronizer implements UISynchronizer, Startable, Disposable {

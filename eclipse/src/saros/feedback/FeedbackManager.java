@@ -11,7 +11,7 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.osgi.service.prefs.Preferences;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.annotations.Component;
 import saros.preferences.EclipsePreferenceConstants;
 import saros.session.ISarosSessionManager;

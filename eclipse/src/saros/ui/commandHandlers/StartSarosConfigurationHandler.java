@@ -3,7 +3,7 @@ package saros.ui.commandHandlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.ui.ide_embedding.DialogManager;
 import saros.ui.pages.ConfigurationPage;

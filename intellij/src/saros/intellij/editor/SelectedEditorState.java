@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ListIterator;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.filesystem.IFile;
 import saros.intellij.filesystem.VirtualFileConverter;

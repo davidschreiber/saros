@@ -1,6 +1,6 @@
 package saros.session;
 
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.concurrent.management.ConcurrentDocumentClient;
 import saros.concurrent.management.ConcurrentDocumentServer;
 import saros.concurrent.watchdog.ConsistencyWatchdogClient;

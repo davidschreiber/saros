@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.spi.LoggingEvent;
 import org.jivesoftware.smack.Connection;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.Saros;
 import saros.SarosPluginContext;
 import saros.annotations.Component;

@@ -1,8 +1,8 @@
 package saros.context;
 
 import java.util.Arrays;
-import org.picocontainer.BindKey;
-import org.picocontainer.MutablePicoContainer;
+import org.saros.picocontainer.BindKey;
+import org.saros.picocontainer.MutablePicoContainer;
 import saros.account.XMPPAccountStore;
 import saros.communication.chat.muc.MultiUserChatService;
 import saros.communication.chat.single.SingleUserChatService;

@@ -12,7 +12,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.Saros;
 import saros.annotations.Component;
 import saros.preferences.EclipsePreferenceConstants;

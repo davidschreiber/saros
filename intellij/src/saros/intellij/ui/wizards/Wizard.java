@@ -19,7 +19,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import org.jetbrains.annotations.NotNull;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.intellij.ui.wizards.pages.AbstractWizardPage;
 import saros.intellij.ui.wizards.pages.HeaderPanel;

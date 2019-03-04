@@ -3,7 +3,7 @@ package saros.editor.internal;
 import org.apache.log4j.Logger;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.editors.text.TextFileDocumentProvider;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.annotations.Component;
 import saros.filesystem.ResourceAdapterFactory;

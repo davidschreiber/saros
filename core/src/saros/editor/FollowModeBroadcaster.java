@@ -1,6 +1,6 @@
 package saros.editor;
 
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.StartFollowingActivity;
 import saros.activities.StopFollowingActivity;
 import saros.session.AbstractActivityProducer;

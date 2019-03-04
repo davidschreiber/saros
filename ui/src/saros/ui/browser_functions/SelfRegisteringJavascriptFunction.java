@@ -1,8 +1,8 @@
 package saros.ui.browser_functions;
 
 import de.fu_berlin.inf.ag_se.browser.functions.JavascriptFunction;
-import org.picocontainer.Startable;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.Startable;
+import org.saros.picocontainer.annotations.Inject;
 import saros.HTMLUIContextFactory;
 import saros.ui.ide_embedding.BrowserCreator;
 

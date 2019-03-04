@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.concurrent.CancellationException;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.ChecksumActivity;
 import saros.activities.ChecksumErrorActivity;
 import saros.activities.FileActivity.Purpose;

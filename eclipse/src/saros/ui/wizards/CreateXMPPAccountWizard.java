@@ -8,7 +8,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Registration;
 import org.jivesoftware.smack.packet.XMPPError;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.account.XMPPAccount;
 import saros.account.XMPPAccountStore;

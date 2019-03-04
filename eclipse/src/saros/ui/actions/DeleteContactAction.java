@@ -14,7 +14,7 @@ import org.eclipse.ui.PlatformUI;
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.RosterEntry;
 import org.jivesoftware.smack.XMPPException;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.net.ConnectionState;
 import saros.net.util.XMPPUtils;

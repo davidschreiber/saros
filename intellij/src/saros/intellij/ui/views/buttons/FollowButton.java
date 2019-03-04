@@ -4,7 +4,7 @@ import com.intellij.util.ui.UIUtil;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import org.picocontainer.annotations.Inject;
+import org.saros.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
 import saros.editor.FollowModeManager;
 import saros.editor.IFollowModeListener;

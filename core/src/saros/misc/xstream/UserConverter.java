@@ -1,7 +1,7 @@
 package saros.misc.xstream;
 
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.annotations.Component;
 import saros.communication.extensions.ActivitiesExtension;
 import saros.net.xmpp.JID;

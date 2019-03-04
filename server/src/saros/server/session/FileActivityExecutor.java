@@ -3,7 +3,7 @@ package saros.server.session;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import org.apache.log4j.Logger;
-import org.picocontainer.Startable;
+import org.saros.picocontainer.Startable;
 import saros.activities.FileActivity;
 import saros.activities.SPath;
 import saros.filesystem.IFile;

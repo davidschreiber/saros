@@ -9,7 +9,7 @@ import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.proxy.ProxyInfo;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
-import org.picocontainer.annotations.Nullable;
+import org.saros.picocontainer.annotations.Nullable;
 import saros.SarosConstants;
 import saros.account.XMPPAccount;
 import saros.net.ConnectionState;

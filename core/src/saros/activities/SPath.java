@@ -98,6 +98,7 @@ public class SPath {
   }
 
   /** Returns the project in which the referenced resource is located. */
+  @Deprecated
   public IProject getProject() {
     return project;
   }

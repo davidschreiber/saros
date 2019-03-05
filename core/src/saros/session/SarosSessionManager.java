@@ -224,7 +224,7 @@ public class SarosSessionManager implements ISarosSessionManager {
    * point in order to start a session.)
    */
   @Override
-  public void startSessionWithReferencePoints(
+  public void startSession(
       final Map<IReferencePoint, List<IResource>> referencePointResourcesMapping) {
     /*
      * FIXME split the logic, start a session without anything and then add
@@ -523,7 +523,7 @@ public class SarosSessionManager implements ISarosSessionManager {
   }
 
   @Override
-  public synchronized void addReferencePointResourcesToSession(
+  public synchronized void addReferencePointResources(
       Map<IReferencePoint, List<IResource>> referencePointResourcesMapping) {
     if (referencePointResourcesMapping == null) {
       return;

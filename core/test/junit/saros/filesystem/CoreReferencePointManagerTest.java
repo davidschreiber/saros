@@ -54,7 +54,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testPutOnce() {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     IProject mappedProject = referencePointManager.get(referencePoint);
 
     Assert.assertNotNull(mappedProject);
@@ -72,8 +72,8 @@ public class CoreReferencePointManagerTest {
     IProject newProject = createMock(IProject.class);
     replay(newProject);
 
-    referencePointManager.put(referencePoint, project);
-    referencePointManager.put(referencePoint, newProject);
+    referencePointManager.putIfAbsent(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, newProject);
 
     IProject mappedProject = referencePointManager.get(referencePoint);
 
@@ -89,7 +89,7 @@ public class CoreReferencePointManagerTest {
     Assert.assertEquals(0, projects.size());
 
     referencePoints.add(referencePoint);
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
 
     projects = referencePointManager.getProjects(referencePoints);
 
@@ -102,12 +102,12 @@ public class CoreReferencePointManagerTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void putMappingWithNullProject() {
-    referencePointManager.put(referencePoint, null);
+    referencePointManager.putIfAbsent(referencePoint, null);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void putMappingWithNullReferencePoint() {
-    referencePointManager.put(null, project);
+    referencePointManager.putIfAbsent(null, project);
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -122,7 +122,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testGetFolder() {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     IFolder testFolder =
         referencePointManager.getFolder(referencePoint, PROJECT_RELATIVE_PATH_TO_FOLDER);
 
@@ -131,7 +131,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testGetFile() {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     IFile testFile = referencePointManager.getFile(referencePoint, PROJECT_RELATIVE_PATH_TO_FILE);
 
     Assert.assertEquals(file, testFile);
@@ -139,7 +139,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testProjectExist() {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     boolean projectExists = referencePointManager.projectExists(referencePoint);
 
     Assert.assertTrue(projectExists);
@@ -147,7 +147,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testGetName() {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     String testName = referencePointManager.getName(referencePoint);
 
     Assert.assertEquals(PROJECT_NAME, testName);
@@ -155,7 +155,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testGetDefaultCharset() throws IOException {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     String testCharset = referencePointManager.getDefaultCharSet(referencePoint);
 
     Assert.assertEquals(CHARSET, testCharset);
@@ -163,7 +163,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testGetMembers() throws IOException {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
     IResource[] members = referencePointManager.members(referencePoint);
 
     Assert.assertEquals(2, members.length);
@@ -176,7 +176,7 @@ public class CoreReferencePointManagerTest {
 
   @Test
   public void testCreateSPath() {
-    referencePointManager.put(referencePoint, project);
+    referencePointManager.putIfAbsent(referencePoint, project);
 
     SPath expectedSPath = new SPath(project, projectRelativePath);
 

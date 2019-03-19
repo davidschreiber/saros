@@ -1,6 +1,5 @@
 package saros.ui.views;
 
-import de.fu_berlin.inf.ag_se.browser.extensions.IJQueryBrowser;
 import org.apache.log4j.Logger;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -9,6 +8,7 @@ import org.eclipse.swt.widgets.Link;
 import org.eclipse.ui.part.ViewPart;
 import org.picocontainer.annotations.Inject;
 import saros.SarosPluginContext;
+import saros.ui.browser.IBrowserWrapper;
 import saros.ui.ide_embedding.BrowserCreator;
 import saros.ui.pages.MainPage;
 
@@ -31,7 +31,7 @@ public class SarosViewBrowserVersion extends ViewPart {
   private static final String TROUBLESHOOTING_URL = "http://www.saros-project.org/troubleshooting";
   private static final Logger LOG = Logger.getLogger(SarosViewBrowserVersion.class);
 
-  private IJQueryBrowser browser;
+  private IBrowserWrapper browser;
 
   @Inject private MainPage mainPage;
 
@@ -46,7 +46,6 @@ public class SarosViewBrowserVersion extends ViewPart {
 
     try {
       browser = browserCreator.createBrowser(parent, SWT.NONE, mainPage);
-
     } catch (SWTError e) {
       // This might happen when there is no standard browser available
       LOG.error("Could not instantiate Browser: ", e);

@@ -1,10 +1,10 @@
 package saros.ui.ide_embedding;
 
-import de.fu_berlin.inf.ag_se.browser.IBrowser;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
 import saros.synchronize.UISynchronizer;
+import saros.ui.browser.IBrowserWrapper;
 import saros.ui.pages.AbstractBrowserPage;
 import saros.ui.pages.IBrowserPage;
 
@@ -28,9 +28,9 @@ public abstract class DialogManager {
   }
 
   /**
-   * Shows a dialog displaying an HTML page inside a {@link IBrowser}. For each {@link IBrowserPage}
-   * there may only be one open dialog window. If this method is called when the dialog is already
-   * displayed, nothing happens.
+   * Shows a dialog displaying an HTML page inside a {@link IBrowserWrapper}. For each {@link
+   * IBrowserPage} there may only be one open dialog window. If this method is called when the
+   * dialog is already displayed, nothing happens.
    *
    * <p>May be called from any thread.
    *

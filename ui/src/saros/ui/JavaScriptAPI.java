@@ -2,10 +2,10 @@ package saros.ui;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import de.fu_berlin.inf.ag_se.browser.IBrowser;
 import java.util.List;
 import org.apache.log4j.Logger;
 import saros.account.XMPPAccount;
+import saros.ui.browser.IBrowserWrapper;
 import saros.ui.model.ProjectTree;
 import saros.ui.model.State;
 
@@ -14,7 +14,8 @@ import saros.ui.model.State;
  * provides a list of functions that reflects and abstracts the actual JS API. For example updating
  * a data model in the "JavaScriptWorld" or show an error in the fronted using the browser.
  *
- * <p>All provided functions are using the {@link IBrowser#run(String)} method to invoke JavaScript.
+ * <p>All provided functions are using the {@link IBrowserWrapper#run(String)} method to invoke
+ * JavaScript.
  *
  * <p>Changes in the Java-->JavaScript API should be reflected and encapsulated here.
  */
@@ -33,7 +34,7 @@ public class JavaScriptAPI {
    * @param browser the browser instance that should show this error message
    * @param errorMessage the message that will be shown to the user
    */
-  public static void showError(IBrowser browser, String errorMessage) {
+  public static void showError(IBrowserWrapper browser, String errorMessage) {
     LOG.debug("Trigger js showError() on browser " + browser.getUrl() + "," + errorMessage);
     triggerEvent(browser, "showError", errorMessage);
   }
@@ -44,7 +45,7 @@ public class JavaScriptAPI {
    * @param browser the browser instance in which the model should be updated
    * @param projectTrees to update the JS model with
    */
-  public static void updateProjects(IBrowser browser, List<ProjectTree> projectTrees) {
+  public static void updateProjects(IBrowserWrapper browser, List<ProjectTree> projectTrees) {
     LOG.debug("Sending list of ProjectTree JSONs to browser " + browser.getUrl());
     triggerEvent(browser, "updateProjectTrees", toJson(projectTrees));
   }
@@ -55,7 +56,7 @@ public class JavaScriptAPI {
    * @param browser the browser instance in which the model should be updated
    * @param sarosStateModel to update the JS model with
    */
-  public static void updateState(IBrowser browser, State sarosStateModel) {
+  public static void updateState(IBrowserWrapper browser, State sarosStateModel) {
     LOG.debug("Sending State JSON to browser " + browser.getUrl());
     triggerEvent(browser, "updateState", toJson(sarosStateModel));
   }
@@ -66,7 +67,7 @@ public class JavaScriptAPI {
    * @param browser the browser instance in which the model should be updated
    * @param accounts a list of Accounts to update the JS model with
    */
-  public static void updateAccounts(IBrowser browser, List<XMPPAccount> accounts) {
+  public static void updateAccounts(IBrowserWrapper browser, List<XMPPAccount> accounts) {
     LOG.debug("Sending list of Account JSONs to browser " + browser.getUrl());
     triggerEvent(browser, "updateAccounts", toJson(accounts));
   }
@@ -79,8 +80,9 @@ public class JavaScriptAPI {
    *     "updateAccounts" or "updateState"
    * @param parameters the parameters for this event.
    */
-  private static void triggerEvent(IBrowser browser, String javaScriptEvent, String parameters) {
-    browser.run("SarosApi.trigger('" + javaScriptEvent + "', " + parameters + ");");
+  private static void triggerEvent(
+      IBrowserWrapper browser, String javaScriptEvent, String parameters) {
+    browser.execute("SarosApi.trigger('" + javaScriptEvent + "', " + parameters + ");");
   }
 
   /**
@@ -88,7 +90,7 @@ public class JavaScriptAPI {
    *
    * @param object the object to be serialized
    * @return a JSON string serialization of the given object
-   * @see <a href="http://google.github.io/gson/apidocs/com/google/gson/Gson.html">GsonAPI</a>
+   * @see <a href= "http://google.github.io/gson/apidocs/com/google/gson/Gson.html">GsonAPI</a>
    */
   public static String toJson(Object object) {
     return GSON.toJson(object);
@@ -104,7 +106,7 @@ public class JavaScriptAPI {
    * @param classOfT type of class to
    * @return an object of type T from the json. Returns null if json is null.
    * @throws JsonSyntaxException if json is not a valid representation for an object of type typeOfT
-   * @see <a href="http://google.github.io/gson/apidocs/com/google/gson/Gson.html">GsonAPI</a>
+   * @see <a href= "http://google.github.io/gson/apidocs/com/google/gson/Gson.html">GsonAPI</a>
    */
   public static <T> T fromJson(String json, Class<T> classOfT) throws JsonSyntaxException {
     return GSON.fromJson(json, classOfT);

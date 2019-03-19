@@ -1,8 +1,8 @@
 package saros.ui.manager;
 
-import de.fu_berlin.inf.ag_se.browser.extensions.IJQueryBrowser;
 import java.util.HashMap;
 import java.util.Map;
+import saros.ui.browser.IBrowserWrapper;
 import saros.ui.pages.IBrowserPage;
 import saros.ui.renderer.Renderer;
 
@@ -12,8 +12,8 @@ import saros.ui.renderer.Renderer;
  */
 public class BrowserManager {
 
-  private Map<Class<? extends IBrowserPage>, IJQueryBrowser> browsers =
-      new HashMap<Class<? extends IBrowserPage>, IJQueryBrowser>();
+  private Map<Class<? extends IBrowserPage>, IBrowserWrapper> browsers =
+      new HashMap<Class<? extends IBrowserPage>, IBrowserWrapper>();
 
   /**
    * Sets or replaces the browser for the given page and all corresponding renderers.
@@ -21,7 +21,7 @@ public class BrowserManager {
    * @param page the page
    * @param browser the browser to be set for the given page
    */
-  public synchronized void setBrowser(IBrowserPage page, IJQueryBrowser browser) {
+  public synchronized void setBrowser(IBrowserPage page, IBrowserWrapper browser) {
     browsers.put(page.getClass(), browser);
     for (Renderer renderer : page.getRenderers()) {
       renderer.addBrowser(browser);
@@ -50,7 +50,7 @@ public class BrowserManager {
    * @return the browser displaying the given page
    * @throws RuntimeException if the time out is over
    */
-  public synchronized IJQueryBrowser getBrowser(Class<? extends IBrowserPage> browserPageClass) {
+  public synchronized IBrowserWrapper getBrowser(Class<? extends IBrowserPage> browserPageClass) {
     long current = System.currentTimeMillis();
     while (!browsers.containsKey(browserPageClass) && System.currentTimeMillis() - current < 3000) {
       try {

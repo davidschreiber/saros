@@ -1,13 +1,13 @@
 package saros.ui.ide_embedding;
 
-import de.fu_berlin.inf.ag_se.browser.extensions.IJQueryBrowser;
-import de.fu_berlin.inf.ag_se.browser.functions.JavascriptFunction;
-import de.fu_berlin.inf.ag_se.browser.swt.SWTJQueryBrowser;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.swt.widgets.Composite;
 import org.jivesoftware.smack.util.StringUtils;
 import saros.HTMLUIContextFactory;
+import saros.ui.browser.IBrowserWrapper;
+import saros.ui.browser.JavascriptFunction;
+import saros.ui.browser.SWTBrowserWrapper;
 import saros.ui.manager.BrowserManager;
 import saros.ui.pages.IBrowserPage;
 
@@ -16,7 +16,7 @@ import saros.ui.pages.IBrowserPage;
  * IDE-specific resource location however by using the correct instance of {@link
  * IUIResourceLocator} which is injected by PicoContainer.
  *
- * <p>During the creation of a {@link IJQueryBrowser} all {@link JavascriptFunction}s that are
+ * <p>During the creation of a {@link IBrowserWrapper} all {@link JavascriptFunction}s that are
  * registered in the {@link HTMLUIContextFactory} are injected into this browser instance.
  */
 public class BrowserCreator {
@@ -42,7 +42,7 @@ public class BrowserCreator {
 
   /**
    * Adds a function to the set of {@link JavascriptFunction} that will be injected to any new
-   * {@link IJQueryBrowser browser} instance created with {@link #createBrowser(Composite, int,
+   * {@link IBrowserWrapper browser} instance created with {@link #createBrowser(Composite, int,
    * IBrowserPage) createBrowser()}. This does not affect already created browser instances.
    */
   public void addBrowserFunction(JavascriptFunction function) {
@@ -57,17 +57,17 @@ public class BrowserCreator {
    * @param page the page which should be displayed.
    * @return a browser instance which loads and renders the given {@link IBrowserPage BrowserPage}
    */
-  public IJQueryBrowser createBrowser(Composite composite, int style, final IBrowserPage page) {
+  public IBrowserWrapper createBrowser(Composite composite, int style, final IBrowserPage page) {
 
     final String resourceName = page.getRelativePath();
     assert resourceName != null;
 
-    final IJQueryBrowser browser = SWTJQueryBrowser.createSWTBrowser(composite, style);
+    final IBrowserWrapper browser = new SWTBrowserWrapper(composite, style);
 
     String resourceLocation = resourceLocator.getResourceLocation(resourceName);
 
     if (resourceLocation == null) {
-      browser.setText(
+      browser.loadHtml(
           "<html><body><pre>"
               + "Resource <b>"
               + StringUtils.escapeForXML(resourceName)
@@ -75,9 +75,9 @@ public class BrowserCreator {
       return browser;
     }
 
-    browser.open(resourceLocation, 5000);
+    browser.loadUrl(resourceLocation, 5000);
 
-    for (JavascriptFunction function : browserFunctions) browser.createBrowserFunction(function);
+    for (JavascriptFunction function : browserFunctions) browser.addBrowserFunction(function);
 
     browserManager.setBrowser(page, browser);
     browser.runOnDisposal(

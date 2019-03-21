@@ -2,7 +2,6 @@ package saros.ui.browser_functions;
 
 import static org.junit.Assert.assertEquals;
 
-import de.fu_berlin.inf.ag_se.browser.IBrowser;
 import java.lang.reflect.Method;
 import org.easymock.EasyMock;
 import org.easymock.IAnswer;
@@ -13,6 +12,7 @@ import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import saros.ui.JavaScriptAPI;
+import saros.ui.browser.IBrowserWrapper;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(JavaScriptAPI.class)
@@ -46,7 +46,7 @@ public class TypedJavascriptFunctionTest {
     errorShown = false;
 
     PowerMock.mockStatic(JavaScriptAPI.class);
-    JavaScriptAPI.showError(EasyMock.isNull(IBrowser.class), EasyMock.isA(String.class));
+    JavaScriptAPI.showError(EasyMock.isNull(IBrowserWrapper.class), EasyMock.isA(String.class));
     PowerMock.expectLastCall()
         .andStubAnswer(
             new IAnswer<Object>() {

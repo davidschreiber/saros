@@ -1,13 +1,12 @@
 package saros.stf.server.rmi.htmlbot.widget.impl;
 
-import de.fu_berlin.inf.ag_se.browser.extensions.IJQueryBrowser;
-import de.fu_berlin.inf.ag_se.browser.html.ISelector;
-import de.fu_berlin.inf.ag_se.browser.html.ISelector.IdSelector;
-import de.fu_berlin.inf.ag_se.browser.html.ISelector.NameSelector;
-import de.fu_berlin.inf.ag_se.browser.html.ISelector.Selector;
 import java.rmi.RemoteException;
 import org.apache.log4j.Logger;
 import saros.stf.server.HTMLSTFRemoteObject;
+import saros.stf.server.bot.jquery.ISelector;
+import saros.stf.server.bot.jquery.ISelector.IdSelector;
+import saros.stf.server.bot.jquery.ISelector.NameSelector;
+import saros.stf.server.bot.jquery.ISelector.Selector;
 import saros.stf.server.bot.jquery.JQueryHelper;
 import saros.stf.server.rmi.htmlbot.widget.IRemoteHTMLButton;
 import saros.stf.server.rmi.htmlbot.widget.IRemoteHTMLCheckbox;
@@ -20,6 +19,7 @@ import saros.stf.server.rmi.htmlbot.widget.IRemoteHTMLTextElement;
 import saros.stf.server.rmi.htmlbot.widget.IRemoteHTMLTree;
 import saros.stf.server.rmi.htmlbot.widget.IRemoteHTMLView;
 import saros.ui.View;
+import saros.ui.browser.IBrowserWrapper;
 
 public class RemoteHTMLView extends HTMLSTFRemoteObject implements IRemoteHTMLView {
 
@@ -150,7 +150,8 @@ public class RemoteHTMLView extends HTMLSTFRemoteObject implements IRemoteHTMLVi
 
   @Override
   public void open() {
-    getBrowser().run(String.format("SarosApi.viewStore.doChangeView('%s')", view.getViewName()));
+    getBrowser()
+        .execute(String.format("SarosApi.viewStore.doChangeView('%s')", view.getViewName()));
   }
 
   public void selectView(View view) {
@@ -166,7 +167,7 @@ public class RemoteHTMLView extends HTMLSTFRemoteObject implements IRemoteHTMLVi
     this.tree.setBrowser(getBrowser());
   }
 
-  private IJQueryBrowser getBrowser() {
+  private IBrowserWrapper getBrowser() {
     return getBrowserManager().getBrowser(view.getPageClass());
   }
 
